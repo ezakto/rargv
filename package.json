@@ -1,0 +1,23 @@
+{
+  "name": "rargv",
+  "version": "0.0.1",
+  "description": "Read command line arguments from input files",
+  "author": "Nicolás Arias <ezakto@ezakto.com>",
+  "keywords": [
+    "argv",
+    "file",
+    "comments",
+    "cli"
+  ],
+  "main": "rargv.js",
+  "preferGlobal": true,
+  "bin": {
+    "rargv": "rargv.js"
+  },
+  "dependencies": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ezakto/rargv.git"
+  }
+}
