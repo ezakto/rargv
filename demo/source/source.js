@@ -1,4 +1,4 @@
-/** @argv browserify -o $dirname/../js/app.js */
+/** @argv browserify -o ../js/app.js */
 
 exports = module.exports = function() {
     

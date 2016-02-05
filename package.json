@@ -1,6 +1,6 @@
 {
   "name": "rargv",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Read command line arguments from input files",
   "author": "Nicolás Arias <ezakto@ezakto.com>",
   "keywords": [

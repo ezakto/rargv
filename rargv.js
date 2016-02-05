@@ -16,15 +16,30 @@ if (!file || !command || command == 'help' || command == '--help') {
     return;
 }
 
-var filename = path.basename(file);
 var dirname = path.dirname(file);
+var filename = path.basename(file);
+var extname = path.extname(filename);
+var basename = path.basename(file, extname);
 var source = fs.readFileSync(file, { encoding: 'utf8' });
-var regexp = /\/\*\*\s*@argv\s+([a-z0-9_-]+)\s+([^\n]+?)\s*\*\//g;
 
-source.replace(regexp, function(m, cmd, args){
-    args = args.replace(/\$filename\b/, filename);
-    args = args.replace(/\$dirname\b/, dirname);
+var cmntre = /\/\*\*\s*@argv\s+([a-z0-9_-]+)\s+([^\n]+?)\s*\*\//g;
+var argsre = /[^\s"]+|"(?:\\"|[^"])+"/g;
+var pathre = /^(\.\.?\/)/;
+
+source.replace(cmntre, function(m, cmd, args){
     if (cmd == command) {
+        // Replace variables
+        args = args
+            .replace(/\$dirname\b/g, dirname)
+            .replace(/\$filename\b/g, filename)
+            .replace(/\$extname\b/g, extname)
+            .replace(/\$basename\b/g, basename);
+
+        // Replace relative paths
+        args = args.match(argsre).map(function(arg){
+            return pathre.test(arg) ? path.normalize(path.join(dirname, arg)) : arg;
+        }).join(' ');
+
         child_process.exec(process.argv.slice(2).join(' ') + ' ' + args, function(err, stdout, stderr){
             if (stdout) process.stdout.write(stdout);
             if (stderr) process.stderr.write(stderr);
