@@ -45,10 +45,10 @@ $ browserify sources/js/myfile.js -o dist/js/app.js -t babelify
 #### Variables
 There are some variables exposed to the @argv directive:
 
-    * `$filename` filename with extension, for example: `index.html`
-    * `$basename` filename without extension, for example: `index`
-    * `$extname` file extension, for example: `.html`
-    * `$dirname` directory name, relative from the cwd, for example: `.`
+* `$filename` filename with extension, for example: `index.html`
+* `$basename` filename without extension, for example: `index`
+* `$extname` file extension, for example: `.html`
+* `$dirname` directory name, relative from the cwd, for example: `.`
 
 ## Copyright and Licensing
 
