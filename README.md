@@ -15,12 +15,12 @@ $ npm install -g rargv
 ### Specifying arguments inside a file
 Do it within comments with this format:
 ```
-/** @argv <tool> <arguments> */
+/* @argv <tool> <arguments> */
 ```
 `arguments` will be appended to the argument list when this file is going to be processed by the specified `tool`.
 For example:
 ```
-/** @argv lessc ./css/compiled.css */
+/* @argv lessc ./css/compiled.css */
 ```
 
 Now we have to proxy our command (in this example, for `lessc`) with `rargv` in order to correctly parse and apply the defined parameters.
@@ -35,7 +35,7 @@ $ lessc source.less css/compiled.css
 #### More complex example
 In a javascript file:
 ```
-/** @argv browserify -o ../../dist/js/app.js -t babelify */
+/* @argv browserify -o ../../dist/js/app.js -t babelify */
 ```
 Then, running `$ rargv browserify sources/js/myfile.js` will translate to:
 ```
